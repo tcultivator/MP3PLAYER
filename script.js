@@ -78,7 +78,7 @@ function selectSong(value) {
     console.log('test to')
     console.log(value)
     document.getElementById('playBtn').disabled = false;
-    document.getElementById('audio').src = `http://127.0.0.1:5500/${value}`;
+    document.getElementById('audio').src = value;
     console.log(document.getElementById('audio').src)
     play = false;
     clearInterval(interval)
