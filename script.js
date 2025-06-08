@@ -19,10 +19,7 @@ function playBtn() {
             document.getElementById('duration').value = val;
             let duration = document.getElementById('audio').duration;
             document.getElementById('duration').max = Math.floor(duration);
-            console.log('eto ung val ', val)
-            console.log('eto ung duration ', Math.floor(duration))
-            console.log('eto ung status ng loop ', loop)
-            console.log('eto ung status ng play ', play)
+            console.log(val - Math.floor(duration));
             if (val == Math.floor(duration)) {
                 val = 0;
                 document.getElementById('duration').value = 0;
@@ -46,9 +43,9 @@ function playBtn() {
 function repeat() {
     loop = !loop;
     let audioRepeat
-    loop ? (audioRepeat = document.getElementById('audio'),
+    loop ? (audioRepeat = document.getElementById('audio'), popup(),
         audioRepeat.loop = true,
-        document.getElementById('repeat').style = `color: rgb(7, 125, 172);`) : (audioRepeat = document.getElementById('audio'),
+        document.getElementById('repeat').style = `color: rgb(7, 125, 172);`) : (audioRepeat = document.getElementById('audio'), popup(),
             audioRepeat.loop = false,
             document.getElementById('repeat').style = `color: white;`);
 
@@ -96,4 +93,17 @@ function songList() {
         animation: open 2s;`) : (document.getElementById('songlist').style = `display:none;
     width:initial;`
     );
+}
+
+
+function popup() {
+    console.log('eto ung loop status ', loop)
+    loop ? (document.getElementById('popupContent').textContent = `Repeat On`, document.getElementById('popup').style = `display:flex;`,
+        setTimeout(() => {
+            document.getElementById('popup').style = `display:none;`
+        }, 1000)
+    ) : (document.getElementById('popupContent').textContent = `Repeat Off`, document.getElementById('popup').style = `display:flex;`,
+        setTimeout(() => {
+            document.getElementById('popup').style = `display:none;`
+        },1000));
 }
